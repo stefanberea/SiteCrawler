@@ -4,14 +4,26 @@ using SiteCrawler;
 
 Console.WriteLine("Hello, World!");
 
-var baseUrl = "http://google.com/";
-var htmlSource = HttpHelper.GetSource(baseUrl);
+var baseUrl = "https://twitter.com/";
+var httpHelper = new HttpHelper(baseUrl);
+var htmlSource = httpHelper.GetSource(baseUrl);
 
 var document = new HtmlDocument();
 document.LoadHtml(htmlSource);
 var urls = document.DocumentNode.SelectNodes("//a");
 foreach (var url in urls)
 {
-    //var parsedUrl = HttpHelper.ParseUrl();
-    Console.WriteLine(url.Attributes["href"].Value);
+    var address = url.Attributes["href"].Value;
+    var host = httpHelper.GetHost(address);
+    if (httpHelper.HasCommonHost(host))
+    {
+        Console.WriteLine(address);
+        SaveToFile(document, $"{host}.html");
+    }
+}
+
+
+static void SaveToFile(HtmlDocument documnet, string filePath)
+{
+    documnet.Save(filePath);
 }
