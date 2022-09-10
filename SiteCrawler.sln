@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrawlerDemo", "SiteCraw
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrowlerTests", "SiteCrowlerTests\SiteCrowlerTests.csproj", "{7B3BD806-BD22-4515-A0CC-4E0FE4E857DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteCrawler", "SiteCrawler\SiteCrawler.csproj", "{12C3074A-B2B1-4400-87B8-5C24E103D1CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrawler", "SiteCrawler\SiteCrawler.csproj", "{12C3074A-B2B1-4400-87B8-5C24E103D1CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7314B57C-9280-477D-91B9-EB6845187AA3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
