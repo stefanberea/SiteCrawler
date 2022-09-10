@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrawler", "SiteCrawler\SiteCrawler.csproj", "{6975AC2F-59AD-40D7-900B-D52209A8FCEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrawlerDemo", "SiteCrawlerDemo\SiteCrawlerDemo.csproj", "{6975AC2F-59AD-40D7-900B-D52209A8FCEA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteCrowlerTests", "SiteCrowlerTests\SiteCrowlerTests.csproj", "{7B3BD806-BD22-4515-A0CC-4E0FE4E857DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteCrawler", "SiteCrawler\SiteCrawler.csproj", "{12C3074A-B2B1-4400-87B8-5C24E103D1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7B3BD806-BD22-4515-A0CC-4E0FE4E857DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B3BD806-BD22-4515-A0CC-4E0FE4E857DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B3BD806-BD22-4515-A0CC-4E0FE4E857DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C3074A-B2B1-4400-87B8-5C24E103D1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C3074A-B2B1-4400-87B8-5C24E103D1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C3074A-B2B1-4400-87B8-5C24E103D1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C3074A-B2B1-4400-87B8-5C24E103D1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
