@@ -10,8 +10,6 @@ namespace SiteCrawler
 {
     public class HttpHelper
     {
-        public string HOST = string.Empty;
-
         public static bool IsValidUrl(string baseUrl)
         {
             bool uri = Uri.TryCreate(baseUrl, UriKind.Absolute, out Uri? parsedUri);
@@ -27,11 +25,18 @@ namespace SiteCrawler
             if (!IsUrlValid(baseUrl))
                 return result;
 
-            using (HttpClient client = new())
+            try
             {
-                using HttpResponseMessage response = client.GetAsync(baseUrl).Result;
-                using HttpContent content = response.Content;
-                result = content.ReadAsStringAsync().Result;
+                using (HttpClient client = new())
+                {
+                    using HttpResponseMessage response = client.GetAsync(baseUrl).Result;
+                    using HttpContent content = response.Content;
+                    result = content.ReadAsStringAsync().Result;
+                }
+            }
+            catch (AggregateException e)
+            {
+                return result;
             }
 
             return result;

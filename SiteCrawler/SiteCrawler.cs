@@ -12,7 +12,12 @@ namespace SiteCrawler
 {
     public class SiteCrawler
     {
-        public static int Crawl(string baseUrl)
+        public static int Crawl(string baseUrl, Action<HtmlDocument, string> process)
+        {
+            return Crawl(baseUrl, process, new HashSet<string>(StringComparer.OrdinalIgnoreCase));
+        }
+
+        public static int Crawl(string baseUrl, Action<HtmlDocument, string> process, HashSet<string> siteUrls)
         {
             if (!HttpHelper.IsUrlValid(baseUrl))
                 return 1;
@@ -22,24 +27,31 @@ namespace SiteCrawler
 
             var document = new HtmlDocument();
             document.LoadHtml(htmlSource);
+            siteUrls.Add(baseUrl);
+            process(document, baseUrl);
+
             var urls = document.DocumentNode.SelectNodes("//a");
+            if(urls == null || urls.Count == 0)
+            {
+                return 0;
+            }
+
             foreach (var url in urls)
             {
                 var address = url.Attributes["href"].Value;
                 var host = HttpHelper.GetHost(address);
-                if (HttpHelper.HaveCommonHost(host, baseHost))
+                if (HttpHelper.HaveCommonHost(host, baseHost) && !siteUrls.Contains(address))
                 {
                     Console.WriteLine(address);
-                    SaveToFile(document, $"{host}.html");
+                    Crawl(address, process, siteUrls);
                 }
             }
             return 0;
         }
 
-
-        static void SaveToFile(HtmlDocument documnet, string filePath)
+        public static void SaveToFile(HtmlDocument document, string filePath)
         {
-            documnet.Save(filePath);
+            document.Save($"{filePath}.html");
         }
 
     }
