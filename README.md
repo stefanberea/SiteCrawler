@@ -10,6 +10,8 @@ This contains methods for handling HTTP requests, URI resources and the algorith
 
 This application takes a URL as a command line argument and calls the Crawl function from the class library. The actions a user might want to take have to be passes as parameter to the Crawl function. 
 
+In this case: the action is saving each traversed web page to a file on disk. Since Windows has a lot of reserved characters, the program generates a GUID and uses that as a filename. The relation between GUIDs and the URL they contain, can be found in FileIndex.csv (generated at runtime).
+
 ## Test library - minimal due to lack of time
 
 #
