@@ -12,16 +12,13 @@ namespace SiteCrawler
     {
         public string HOST = string.Empty;
 
-        public HttpHelper(string baseUrl)
+        public static bool IsValidUrl(string baseUrl)
         {
             bool uri = Uri.TryCreate(baseUrl, UriKind.Absolute, out Uri? parsedUri);
-            if (uri && parsedUri != null)
-            {
-                HOST = parsedUri.Host;
-            }
+            return uri && parsedUri != null;
         }
 
-        public string GetSource(string baseUrl)
+        public static string GetHtml(string baseUrl)
         {
             string result = string.Empty;
 
@@ -40,7 +37,7 @@ namespace SiteCrawler
             return result;
         }
 
-        public string GetHost(string address)
+        public static string GetHost(string address)
         {
             var result = string.Empty;
 
@@ -52,12 +49,12 @@ namespace SiteCrawler
             return result;
         }
 
-        public bool HasCommonHost(string newHost)
+        public static bool HaveCommonHost(string newHost, string oldHost)
         {
-            return newHost.Equals(this.HOST);
+            return newHost.Equals(oldHost);
         }
 
-        public bool IsUrlValid(string baseUrl)
+        public static bool IsUrlValid(string baseUrl)
         {
             return Uri.IsWellFormedUriString(baseUrl, UriKind.Absolute);
         }

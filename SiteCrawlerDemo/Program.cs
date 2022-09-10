@@ -1,29 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-using HtmlAgilityPack;
-using SiteCrawler;
-
-Console.WriteLine("Hello, World!");
-
-var baseUrl = "https://twitter.com/";
-var httpHelper = new HttpHelper(baseUrl);
-var htmlSource = httpHelper.GetSource(baseUrl);
-
-var document = new HtmlDocument();
-document.LoadHtml(htmlSource);
-var urls = document.DocumentNode.SelectNodes("//a");
-foreach (var url in urls)
+﻿internal class Program
 {
-    var address = url.Attributes["href"].Value;
-    var host = httpHelper.GetHost(address);
-    if (httpHelper.HasCommonHost(host))
+    private static int Main(string[] args)
     {
-        Console.WriteLine(address);
-        SaveToFile(document, $"{host}.html");
+        if (args.Length == 0)
+        {
+            System.Console.WriteLine("Please enter a web URL to crawl.");
+            return 1;
+        }
+        var result = SiteCrawler.SiteCrawler.Crawl(args[0]);
+
+        return result;
     }
-}
-
-
-static void SaveToFile(HtmlDocument documnet, string filePath)
-{
-    documnet.Save(filePath);
 }

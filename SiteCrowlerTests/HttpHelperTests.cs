@@ -16,9 +16,8 @@ namespace SiteCrowlerTests
         public void AlwaysReturnsString(string input)
         {
             var expected = string.Empty;
-            var httpHelper = new HttpHelper(input);
 
-            var result = httpHelper.GetSource(input);
+            var result = HttpHelper.GetHtml(input);
             Assert.That(result, Is.EqualTo(expected));
         }
     }
