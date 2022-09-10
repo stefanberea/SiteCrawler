@@ -13,7 +13,7 @@ internal class Program
         }
         var result = SiteCrawler.SiteCrawler.Crawl(args[0], (document, address) =>
         {
-            var filePath = address.GetHashCode().ToString();
+            var filePath = Guid.NewGuid().ToString();
             outputFiles.Add(filePath, address);
             SiteCrawler.SiteCrawler.SaveToFile(document, filePath);
         });
